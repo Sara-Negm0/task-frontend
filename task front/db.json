@@ -1,0 +1,59 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Sara",
+      "age": 25,
+      "email": "test@test.com",
+      "course": "C#"
+    },
+    {
+      "id": 2,
+      "name": "Hamada",
+      "age": 25,
+      "email": "test1@test.com",
+      "course": "CSS"
+    },
+    {
+      "id": 4,
+      "name": "Radwa",
+      "age": 20,
+      "email": "test4@test.com",
+      "course": "SQL"
+    },
+    {
+      "id": 6,
+      "name": "Malk",
+      "age": 24,
+      "email": "testM@test.com",
+      "course": "Java Script"
+    },
+    {
+      "id": 7,
+      "name": "Hamada",
+      "age": 16,
+      "course": "SQL"
+    },
+    {
+      "id": 9,
+      "name": "Maha",
+      "age": 13,
+      "email": "www",
+      "course": "Java Script"
+    },
+    {
+      "id": 5,
+      "name": "hamada el-Gen",
+      "age": 15,
+      "email": "19",
+      "course": "Java Script"
+    },
+    {
+      "id": 10,
+      "name": "mohamed",
+      "age": 19,
+      "email": "ssss@sss.com",
+      "course": "SQL"
+    }
+  ]
+}

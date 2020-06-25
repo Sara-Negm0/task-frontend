@@ -1,0 +1,71 @@
+<div class="container">
+    
+    <!-- <div *ngIf="Employees==null"> -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Hiring Date</th>
+                    <th scope="col">National ID</th>
+                    <th scope="col">Job</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                        <a (click)="AddEmployee()"><i class="fa fa-user-plus"></i></a>
+                    </th>
+
+                </tr>
+            </thead>
+           
+            <tbody>
+                <tr *ngFor="let emp of Employees  |  paginate : options;let index=index ">
+
+                    <td scope="row"><input type="checkbox"></td>
+                    <td scope="row">{{emp.ID}}</td>
+                    <td scope="row">{{emp.Name}}</td>
+                    <td scope="row">{{emp.Email}}</td>
+                    <td scope="row">{{emp.Mobile}}</td>
+                    <td scope="row">{{emp.HiringDate}}</td>
+                    <td scope="row">{{emp.NationalID}}</td>
+                    <td scope="row">{{emp.JobName}}</td>
+                    <td scope="row">{{emp.Gender}}</td>
+
+                    <td scope="row">
+                        <a style="cursor: pointer;" *ngIf="emp.Status" (click)="ChangeState(emp.ID)">Active</a>
+                        <a *ngIf="!emp.Status" style="cursor: pointer;" (click)="ChangeState(emp.ID)">NotActive</a>
+                    </td>
+                    <td scope="row">
+                        <a mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage"
+                            placement="left" (confirm)="Delete(emp.ID)" (cancel)="cancelClicked = true">
+                            <i class="fas fa-trash-alt m-1 "></i></a>
+
+                        <!-- <a><i (click)="" class="far fa-trash-alt"></i></a> -->
+                        <a><i (click)="Edit(emp.ID)" class="far fa-edit"></i></a>
+                    </td>
+
+                </tr>
+
+               
+            </tbody>
+        </table>
+        <div class="text-center">
+            <h2 *ngIf="Employees.length == 0">No Employee Founded</h2>
+
+            <div class="col-s-12 text-center margin-top-15" *ngIf="options.totalItems>=options.itemsPerPage">
+               
+                <pagination-controls class="my-pagination" (pageChange)="getNextPrevData($event)" 
+                (pageBoundsCorrection)="getNextPrevData($event)"
+                id='pagination'
+                    maxSize="5" directionLinks="true" autohide="true" previousLabel="" nextLabel="">
+
+                </pagination-controls>
+            </div>
+
+       
+    </div>
+</div>

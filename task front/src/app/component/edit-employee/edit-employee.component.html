@@ -1,0 +1,75 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="UpdateEmployee(form)">
+        <div class="form-group row">
+            <label for="name">Name</label>
+            <input [ngModel]="Employee.Name" formControlName="name" id="name" type="text" class="form-control">
+        </div>
+        <div *ngIf="form.get('name').touched && form.get('name').invalid" class="alert alert-danger">REQUIERD</div>
+     
+        <div class="form-group  row">
+            <label for="email">Email</label>
+            <input [ngModel]="Employee.Email"   formControlName="email" id="email" type="email" class="form-control">
+        </div>
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('email').errors.required">Email is Required</div>
+            <div *ngIf="form.get('email').errors.email">Invalid Email</div>
+        </div>
+
+        <div class="form-group row">
+            <label for="mobile">Mobile</label>
+            <input [ngModel]="Employee.Mobile"  formControlName="mobile" id="mobile" type="text" pattern="^(011|010|012)+\d{8}" class="form-control">
+        </div>
+        <div *ngIf="form.get('mobile').touched && form.get('mobile').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('mobile').errors.required">Mobile is Required</div>
+            <div *ngIf="form.get('mobile').errors.pattern">Invalid Mobile Number</div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nationalID">National ID</label>
+            <input [ngModel]="Employee.NationalID"  formControlName="nationalID" id="nationalID" type="text" pattern="^([1-9])+\d{13}" class="form-control">
+        </div>
+        <div *ngIf="form.get('nationalID').touched && form.get('nationalID').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('nationalID').errors.required">NationalID is Required</div>
+            <div *ngIf="form.get('nationalID').errors.pattern">Invalid National ID</div>
+        </div>
+
+        <div class="form-group row">
+            <label for="status">Status</label>
+            <input [ngModel]="Employee.Status"  formControlName="status" id="status" type="checkbox" class="form-control">
+        </div>
+        <!-- <div *ngIf="form.get('status').touched && form.get('status').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('status').errors.required">Status is Required</div>
+        </div> -->
+
+        <div class="form-group row"> 
+            <label for="job">Job</label>
+
+            <select [ngModel]="Employee.JobID" formControlName="job" id="job" class="form-control custom-select">
+                <!-- <option selected >Choose Job</option> -->
+                <option name="job" *ngFor="let job of jobs" [(ngValue)]="job.ID">{{job.Name}}
+                </option>
+
+            </select>
+        </div>
+        <div *ngIf="form.get('job').touched && form.get('job').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('job').errors.required">Job is Required</div>
+        </div>
+
+        <div class="form-group row"> 
+            <label for="gender">Gender</label>
+
+            <select [ngModel]="Employee.Gender"  formControlName="gender" id="gender" class="form-control custom-select">
+                <!-- <option selected >Choose Job</option> -->
+                <option   Value="Male">Male</option>
+                <option   Value="Female">Female</option>
+
+            </select>
+        </div>
+        <div *ngIf="form.get('gender').touched && form.get('gender').invalid" class="alert alert-danger">
+            <div *ngIf="form.get('gender').errors.required">Gender is Required</div>
+        </div>
+
+
+        <button  [disabled]="!form.valid" class="btn btn-primary" type="submit">Update</button>
+    </form>
+</div>
